@@ -4,11 +4,11 @@ import UserForm from "./UserForm";
 
 class Users extends React.Component {
   state = {
-    users: null,
+    users: [],
   };
 
-  compontentDidMount() {
-    this.setTimeout(() => {
+  componentDidMount() {
+    window.setTimeout(() => {
       this.setState({
         users: [
           {
@@ -42,7 +42,7 @@ class Users extends React.Component {
             />
           </div>
           <div className="col">
-            {this.state.users
+            {this.state.users.length
               ? this.state.users.map((user, i) => <User key={i} {...user} />)
               : "Loading..."}
           </div>

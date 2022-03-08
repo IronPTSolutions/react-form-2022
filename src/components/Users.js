@@ -4,17 +4,25 @@ import UserForm from "./UserForm";
 
 class Users extends React.Component {
   state = {
-    users: [
-      {
-        name: "Julio",
-        email: "julio@example.com",
-      },
-      {
-        name: "Edgar",
-        email: "edgar@example.com",
-      },
-    ],
+    users: null,
   };
+
+  compontentDidMount() {
+    this.setTimeout(() => {
+      this.setState({
+        users: [
+          {
+            name: "Julio",
+            email: "julio@example.com",
+          },
+          {
+            name: "Edgar",
+            email: "edgar@example.com",
+          },
+        ],
+      });
+    }, 3000);
+  }
 
   handleAddUser(user) {
     this.setState({
@@ -34,9 +42,9 @@ class Users extends React.Component {
             />
           </div>
           <div className="col">
-            {this.state.users.map((user, i) => (
-              <User key={i} {...user} />
-            ))}
+            {this.state.users
+              ? this.state.users.map((user, i) => <User key={i} {...user} />)
+              : "Loading..."}
           </div>
         </div>
       </div>
